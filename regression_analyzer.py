@@ -3,7 +3,6 @@
 # perform linear regression on "data" using the x values 0...len(data)-1
 def linearRegression(data):
 	data = list( enumerate( data ) )
-	print(data)
 	m11 = sum( [x ** 2 for x, y in data] )
 	m12 = sum( [x for x, y in data] )
 	m13 = sum( [x * y for x, y in data] )
@@ -25,7 +24,7 @@ def linearRegression(data):
 ####################### for testing only #######################
 
 def getYVals():
-	data_file = open("GDP.txt", 'r') # r param for 'read' mode
+	data_file = open("testdata.txt", 'r') # r param for 'read' mode
 	y_vals = []
 	for line in data_file:
 		# lines in testdata.txt will have 'new line' characters
@@ -36,7 +35,7 @@ y_vals = getYVals()
 linear_consts = linearRegression(y_vals)
 a = linear_consts['a']
 b = linear_consts['b']
-model = [a * x + b for x in range(0,14)]
+model = [a * x + b for x in range(0,len(y_vals))]
 
 import matplotlib.pyplot as plt
 
