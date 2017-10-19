@@ -47,31 +47,6 @@ def quadraticRegression(data):
     
     return{'a':a, 'b':b, 'c':c}
 
-
-
-####################### for testing only #######################
-
-def getYVals():
-	data_file = open("testdata.txt", 'r') # r param for 'read' mode
-	y_vals = []
-	for line in data_file:
-		# lines in testdata.txt will have 'new line' characters
-		y_vals.append( int( line.replace("\n", "" ) ) )
-	return y_vals
-
-y_vals = getYVals()
-linear_consts = linearRegression(y_vals)
-a = linear_consts['a']
-b = linear_consts['b']
-model = [a * x + b for x in range(0,len(y_vals))]
-
-import matplotlib.pyplot as plt
-
-plt.plot(y_vals, 'bo')
-plt.plot(model, 'ro')
-plt.show()
-################################################################
-
 ####################### for testing only (Quadratic Regression)#######################
 
 def getQuaddraticYVals():
