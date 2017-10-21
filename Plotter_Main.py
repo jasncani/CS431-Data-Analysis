@@ -27,7 +27,7 @@ linearRegressionDataValues = np.loadtxt("testdata2.txt")
 """
 Set labels for graphical window
 """
-Plotter.setGraphLabels("Test Graph", "Number of Months", "Hotel Occupancy Taxes Collected")
+Plotter.setGraphLabels("Test Graph", "Number of Months (2004 - 2015)", "Hotel Occupancy Taxes Collected")
 
 """
 Graph test data values on console window
