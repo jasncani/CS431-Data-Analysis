@@ -2,13 +2,14 @@ import csv
 
 def parse(filepath):
     with open(filepath, 'r') as ifile:
-        contents = csv.reader(ifile, delimiter=',')
-        next(contents, None)
+        i = csv.reader(ifile, delimiter=',')
+        next(i, None)
     
-        data1 = []
-        for data in contents:
-             data1.append(data[1:])
+        data = []
+        for contents in i:
+             data.append(contents[1:])
             
-    return data1
+    return data
 
 print(parse('Hotel Occupancy Taxes Collected.csv'))
+
