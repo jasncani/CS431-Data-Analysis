@@ -1,24 +1,14 @@
-##the output is like this...
-  [(.....)
-   (.....)
-   (.....)
-   ...]
-   
-import numpy as np
-data = np.recfromcsv('Hotel Occupancy Taxes Collected.csv',delimiter=",",usecols=range(1,13))
-print(data)
-
-print("")
-print("")
-print("")
-
-##output is with years and months
 import csv
-with open('Hotel Occupancy Taxes Collected.csv', 'r') as ifile:
-    read = csv.reader(ifile)
-    for data in read:
-        print(data)
 
-print("")
-print("")
-print("")
+def parse(filepath):
+    with open(filepath, 'r') as ifile:
+        contents = csv.reader(ifile, delimiter=',')
+        next(contents, None)
+    
+        data1 = []
+        for data in contents:
+             data1.append(data[1:])
+            
+    return data1
+
+print(parse('Hotel Occupancy Taxes Collected.csv'))
