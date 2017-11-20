@@ -25,22 +25,22 @@ def parse(filePath):
     with open(filePath, 'r') as iFile:
         i = csv.reader(iFile, delimiter=',')
         next(i, None)
-        
+
         """
         Algorithm #1 - Outer Loop
         =========================
         Read next row in CSV file onto variable 'rowListOfValues' that will hold a list of strings containing
         csv data values
-        """        
+        """
         for rowListOfValues in i:
-             
+
              """
              Algorithm #2 - Inner Loop
              =========================
              Read next column in CSV file onto variable 'columnListOfValues' that will hold
              a SINGLE STRING value representing the tax collected data value.
 
-             NOTE: using '[1:]' in list is to ommit CSV file's 1st row and 1st column headings 
+             NOTE: using '[1:]' in list is to ommit CSV file's 1st row and 1st column headings
              """
              for columnSingleDataValue in rowListOfValues[1:]:
                  # Parse string value from CSV file to INT type value to represent the tax collected data values
@@ -53,11 +53,3 @@ def parse(filePath):
     been parsed from STRING data type to INT data type
     """
     return data
-
-
-
-"""
-TEST:
--Call function and input CSV file to test and troubleshoot errors of parse() function
-"""
-print(parse('Hotel Occupancy Taxes Collected.csv'))
