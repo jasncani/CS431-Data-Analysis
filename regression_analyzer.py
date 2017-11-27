@@ -20,11 +20,11 @@ def linearRegression(data):
 	return {'a': a, 'b': b}
 
 def exponentialRegression(data):
-        linearlyTransformedData = [math.log(y) for y in data]
-        linearConstants = linearRegression(linearlyTransformedData)
-        A = math.exp(linearConstants['b'])
-        B = linearConstants['a']
-        return {'a': A, 'b': B}
+    linearlyTransformedData = [math.log(y) for y in data]
+    linearConstants = linearRegression(linearlyTransformedData)
+    A = math.exp(linearConstants['b'])
+    B = linearConstants['a']
+    return {'a': A, 'b': B}
 
 
 """quadraticRegression(data)
