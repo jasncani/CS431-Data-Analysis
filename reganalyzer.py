@@ -49,6 +49,12 @@ def exponentialRegression(data):
     model = [math.exp(y) for y in linearModel]
     return(model)
 
+def exponentialProjection(data, projAmt):
+    linearlyTransformedData = [math.log(y) for y in data]
+    linearModel = linearProjection(linearlyTransformedData, projAmt)
+    model = [math.exp(y) for y in linearModel]
+    return(model)
+
 # perform quadratic least squares regression on a data set
 # @param data a 1D array of numerical data
 # @returns a least squares model of the data conforming to the eqn y=ax^2+bx+c

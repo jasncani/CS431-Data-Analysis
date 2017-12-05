@@ -5,7 +5,7 @@ import sys
 
 inputExtensions = ['.csv', '.dat', '.txt']
 outputExtensions = ['.png']
-regressionTypes = ['linear', 'quadratic']
+regressionTypes = ['linear', 'quadratic', 'exponential']
 
 if len(sys.argv) < 4:
     sys.exit("you must supply the input datafile, output filename, and regression type.")
@@ -39,6 +39,8 @@ if regressionType == 'linear':
     model = reganalyzer.linearProjection(data, projAmt)
 elif regressionType == 'quadratic':
     model = reganalyzer.quadraticProjection(data, projAmt)
+elif regressionType == 'exponential':
+    model = reganalyzer.exponentialProjection(data, projAmt)
 
 pyplot.plot(data, 'r.', label='data')
 pyplot.plot(model, 'b', label='regression line')
