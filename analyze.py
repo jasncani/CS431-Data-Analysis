@@ -24,6 +24,3 @@ data = fileparser.parse(inputFileName)
 model = reganalyzer.linearRegression(data)
 
 plotter.plot(data, model, outputFileName)
-# plotter.drawGraph(data, 'scatter')
-# plotter.drawGraph(model, 'line')
-# plotter.displayGraph(outputFileName)
