@@ -35,6 +35,6 @@ elif regressionType == 'quadratic':
 
 pyplot.plot(data, 'ro', label='data')
 pyplot.plot(model, 'b', label='regression line')
-# pyplot.savefig(filename)
+pyplot.savefig(outputFileName)
 pyplot.legend(loc=4)
 pyplot.show()
