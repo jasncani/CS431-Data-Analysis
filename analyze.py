@@ -4,7 +4,7 @@ from matplotlib import pyplot
 import sys
 
 inputExtensions = ['.csv', '.dat', '.txt']
-outputExtensions = ['.png', '.jpg']
+outputExtensions = ['.png']
 regressionTypes = ['linear', 'quadratic']
 
 if len(sys.argv) < 4:
