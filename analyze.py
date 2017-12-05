@@ -26,14 +26,21 @@ if outputFileName == None: sys.exit('no output file detected')
 regressionType = getArg(regressionTypes)
 if regressionType == None: sys.exit('no regression type detected')
 
+projAmt = None
+for arg in sys.argv:
+    if arg.isnumeric():
+        projAmt = int(arg)
+        break
+if projAmt == None: sys.exit('no projection detected')
+
 data = fileparser.parse(inputFileName)
 
 if regressionType == 'linear':
-    model = reganalyzer.linearRegression(data)
+    model = reganalyzer.linearProjection(data, projAmt)
 elif regressionType == 'quadratic':
-    model = reganalyzer.quadraticRegression(data)
+    model = reganalyzer.quadraticProjection(data, projAmt)
 
-pyplot.plot(data, 'ro', label='data')
+pyplot.plot(data, 'r.', label='data')
 pyplot.plot(model, 'b', label='regression line')
 pyplot.savefig(outputFileName)
 pyplot.legend(loc=4)
