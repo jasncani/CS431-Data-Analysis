@@ -1,6 +1,6 @@
 import fileparser
 import reganalyzer
-import plotter
+from matplotlib import pyplot
 import sys
 
 inputExtensions = ['.csv', '.dat', '.txt']
@@ -17,10 +17,20 @@ def getArgWithExt(extensions):
     return None
 
 inputFileName = getArgWithExt(inputExtensions)
+if inputFileName == None: sys.exit('no input file detected.')
+
 outputFileName = getArgWithExt(outputExtensions)
+if outputFileName == None: sys.exit('no output file detected')
 
 data = fileparser.parse(inputFileName)
 
 model = reganalyzer.linearRegression(data)
 
-plotter.plot(data, model, outputFileName)
+pyplot.plot(data, 'ro', label='data')
+pyplot.plot(model, 'b', label='regression line')
+# pyplot.plot(projection, 'bo', label='projection')
+# pyplot.savefig(filename)
+pyplot.legend(loc=4)
+pyplot.show()
+
+# plotter.plot(data, model, projection, outputFileName)
