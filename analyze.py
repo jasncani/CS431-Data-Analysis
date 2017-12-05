@@ -3,35 +3,13 @@ import reganalyzer
 from matplotlib import pyplot
 import sys
 
-inputExtensions = ['.csv', '.dat', '.txt']
-outputExtensions = ['.png']
-regressionTypes = ['linear', 'quadratic', 'exponential']
+if len(sys.argv) < 5:
+    sys.exit("you must supply the input datafile, regression type, projection amount, and output filename")
 
-if len(sys.argv) < 4:
-    sys.exit("you must supply the input datafile, output filename, and regression type.")
-
-def getArg(extensions):
-    for ext in extensions:
-        for arg in sys.argv:
-            if ext in arg:
-                return arg
-    return None
-
-inputFileName = getArg(inputExtensions)
-if inputFileName == None: sys.exit('no input file detected.')
-
-outputFileName = getArg(outputExtensions)
-if outputFileName == None: sys.exit('no output file detected')
-
-regressionType = getArg(regressionTypes)
-if regressionType == None: sys.exit('no regression type detected')
-
-projAmt = None
-for arg in sys.argv:
-    if arg.isnumeric():
-        projAmt = int(arg)
-        break
-if projAmt == None: sys.exit('no projection detected')
+inputFileName = sys.argv[1]
+regressionType = sys.argv[2]
+projAmt = int(sys.argv[3])
+outputFileName = sys.argv[4]
 
 data = fileparser.parse(inputFileName)
 
@@ -42,8 +20,14 @@ elif regressionType == 'quadratic':
 elif regressionType == 'exponential':
     model = reganalyzer.exponentialProjection(data, projAmt)
 
-pyplot.plot(data, 'r.', label='data')
+outputFile = open(outputFileName + '.dat', 'w')
+outputFile.write('data,%s\n' % ','.join([str(x) for x in data]))
+outputFile.write('model,%s\n' % ','.join([str(x) for x in model]))
+outputFile.close()
+
+pyplot.plot(data, 'ro', label='data')
 pyplot.plot(model, 'b', label='regression line')
-pyplot.savefig(outputFileName)
+pyplot.savefig(outputFileName + '.png')
 pyplot.legend(loc=4)
+pyplot.title(outputFileName)
 pyplot.show()
