@@ -13,6 +13,5 @@ def parse(filename):
         line = line.replace('\n', '')
         row = line.split(',')
         for col in row[1:]: # skip first column in row
-            if '.' in col: data.append(float(col))
-            else: data.append(int(col))
+            data.append(float(col))
     return data
