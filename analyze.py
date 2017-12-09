@@ -23,6 +23,8 @@ elif regressionType == 'quadratic':
     model = reganalyzer.quadraticProjection(data, projAmt)
 elif regressionType == 'exponential':
     model = reganalyzer.exponentialProjection(data, projAmt)
+else:
+    sys.exit("unkown regression type provided")
 
 outputFile = open(outputFileName + '.dat', 'w')
 outputFile.write('data,%s\n' % ','.join([str(x) for x in data]))
