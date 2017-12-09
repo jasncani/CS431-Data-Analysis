@@ -1,3 +1,7 @@
+# Main Module for Dr. Zou's Fall 2017 CS431-01 class
+# Purpose: interface between the user and the other modules needed to
+# compute a statistical model of a given dataset
+
 import fileparser
 import reganalyzer
 from matplotlib import pyplot

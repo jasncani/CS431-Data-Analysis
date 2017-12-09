@@ -24,6 +24,10 @@ def linearRegression(data):
     model = [(a * (x)) + b for x in range(0, len(data))]
     return (model)
 
+# perform linear least squares projection on a data set
+# @param data a 1D array of numerical data
+# @param projAmt the number of additional datapoints to calculate
+# @returns a least squares model of the data conforming to the eqn y=ax+B
 def linearProjection(data, projAmt):
     data = list(enumerate(data))
     m11 = sum([x ** 2 for x, y in data])
@@ -49,6 +53,10 @@ def exponentialRegression(data):
     model = [math.exp(y) for y in linearModel]
     return(model)
 
+# perform exponential least squares projection on a data set
+# @param data a 1D array of numerical data
+# @param projAmt the number of additional datapoints to calculate
+# @returns a least squares model of the data conforming to the eqn y=ae^(b * x)
 def exponentialProjection(data, projAmt):
     linearlyTransformedData = [math.log(y) for y in data]
     linearModel = linearProjection(linearlyTransformedData, projAmt)
@@ -86,6 +94,10 @@ def quadraticRegression(data):
     model = [(a * (x * x)) + (b * x) + c for x in range(0, len(data))]
     return(model)
 
+# perform wuadratic least squares projection on a data set
+# @param data a 1D array of numerical data
+# @param projAmt the number of additional datapoints to calculate
+# @returns a least squares model of the data conforming to the eqn y=ax^2+bx+c
 def quadraticProjection(data, projAmt):
     data = list(enumerate(data))
     m11 = sum([x ** 4 for x, y in data])
